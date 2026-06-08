@@ -31,16 +31,126 @@
         .phone-wrapper:focus-within { border-color: #2b7ab3; box-shadow: 0 0 0 3px rgba(43,122,179,0.2); }
         .phone-prefix { background: #f8fafc; padding: 12px 16px; font-weight: 600; color: #1e293b; border-right: 1px solid #e2e8f0; font-size: 15px; }
         .phone-input { flex: 1; padding: 12px 16px; border: none; outline: none; font-size: 15px; }
-        .hamburger { cursor: pointer; width: 30px; height: 24px; position: relative; transform: rotate(0deg); transition: .5s ease-in-out; }
-        .hamburger span { display: block; position: absolute; height: 3px; width: 100%; background: #4a5568; border-radius: 9px; opacity: 1; left: 0; transform: rotate(0deg); transition: .25s ease-in-out; }
+        
+        /* Hamburger Menu Styles */
+        .hamburger {
+            cursor: pointer;
+            width: 30px;
+            height: 24px;
+            position: relative;
+            transform: rotate(0deg);
+            transition: .5s ease-in-out;
+            z-index: 100;
+        }
+        .hamburger span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: #4a5568;
+            border-radius: 9px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
+        }
         .hamburger span:nth-child(1) { top: 0px; }
         .hamburger span:nth-child(2) { top: 10px; }
         .hamburger span:nth-child(3) { top: 20px; }
-        .hamburger.active span:nth-child(1) { top: 10px; transform: rotate(135deg); }
-        .hamburger.active span:nth-child(2) { opacity: 0; left: -60px; }
-        .hamburger.active span:nth-child(3) { top: 10px; transform: rotate(-135deg); }
-        .mobile-menu { transform: translateX(-100%); transition: transform 0.3s ease-in-out; position: fixed; top: 70px; left: 0; width: 280px; height: calc(100% - 70px); background: white; box-shadow: 2px 0 10px rgba(0,0,0,0.1); z-index: 40; overflow-y: auto; }
-        .mobile-menu.open { transform: translateX(0); }
+        .hamburger.active span:nth-child(1) {
+            top: 10px;
+            transform: rotate(135deg);
+            background: #0a5a8c;
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            left: -60px;
+        }
+        .hamburger.active span:nth-child(3) {
+            top: 10px;
+            transform: rotate(-135deg);
+            background: #0a5a8c;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 45;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            overflow-y: auto;
+            padding-top: 80px;
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        .mobile-menu .menu-items {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+        }
+        .mobile-menu .menu-items a {
+            font-size: 18px;
+            font-weight: 500;
+            padding: 12px 16px;
+            color: #1e293b;
+            text-decoration: none;
+            border-bottom: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .mobile-menu .menu-items a:hover {
+            background: #f1f5f9;
+            color: #0a5a8c;
+            padding-left: 24px;
+        }
+        .mobile-menu .menu-items a i {
+            width: 24px;
+            color: #0a5a8c;
+        }
+        .mobile-menu .menu-items .order-link {
+            background: #0a5a8c;
+            color: white;
+            border-radius: 40px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .mobile-menu .menu-items .order-link:hover {
+            background: #1e6fa3;
+            padding-left: 16px;
+        }
+        .mobile-menu .menu-items .order-link i {
+            color: white;
+        }
+        
+        /* Overlay */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 44;
+            display: none;
+        }
+        .menu-overlay.show {
+            display: block;
+        }
+        
+        /* Body lock when menu open */
+        body.menu-open {
+            overflow: hidden;
+        }
+        
         .counter { font-size: 2.5rem; font-weight: 800; color: #0a5a8c; }
         @media (max-width: 768px) {
             .whatsapp-float { width: 48px; height: 48px; font-size: 24px; bottom: 15px; right: 15px; }
@@ -107,23 +217,43 @@
                 <a href="#order" class="bg-[#0a5a8c] text-white px-5 py-2 rounded-full hover:bg-[#1e6fa3] transition font-medium">Кайрылуу</a>
             </div>
             
+            <!-- Hamburger Menu Button (Mobile only) -->
             <div class="hamburger md:hidden" id="hamburgerBtn">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-        
-        <div class="mobile-menu" id="mobileMenu">
-            <div class="flex flex-col p-6 gap-4">
-                <a href="#home" class="text-gray-700 hover:text-[#0a5a8c] py-2 font-medium border-b border-gray-100">🏠 Башкы</a>
-                <a href="#services" class="text-gray-700 hover:text-[#0a5a8c] py-2 font-medium border-b border-gray-100">🦷 Кызматтар</a>
-                <a href="#prices" class="text-gray-700 hover:text-[#0a5a8c] py-2 font-medium border-b border-gray-100">💰 Баалар</a>
-                <a href="#team" class="text-gray-700 hover:text-[#0a5a8c] py-2 font-medium border-b border-gray-100">👨‍⚕️ Дарыгерлер</a>
-                <a href="#order" class="bg-[#0a5a8c] text-white text-center py-2 rounded-full font-medium">📝 Кайрылуу</a>
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </header>
 
-    <div id="menuOverlay" class="fixed inset-0 bg-black/50 z-30 hidden"></div>
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Mobile Menu (Full screen) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-items">
+            <a href="#home">
+                <i class="fas fa-home"></i>
+                <span>Башкы</span>
+            </a>
+            <a href="#services">
+                <i class="fas fa-tooth"></i>
+                <span>Кызматтар</span>
+            </a>
+            <a href="#prices">
+                <i class="fas fa-tag"></i>
+                <span>Баалар</span>
+            </a>
+            <a href="#team">
+                <i class="fas fa-users"></i>
+                <span>Дарыгерлер</span>
+            </a>
+            <a href="#order" class="order-link">
+                <i class="fas fa-paper-plane"></i>
+                <span>Кайрылуу</span>
+            </a>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section id="home" class="gradient-hero pt-28 pb-20 px-4">
@@ -321,7 +451,7 @@
         </div>
     </section>
 
-    <!-- Order Form Section - Дата жана убакыт ЖОК -->
+    <!-- Order Form Section -->
     <section id="order" class="py-20 px-4">
         <div class="container mx-auto max-w-2xl">
             <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8">
@@ -440,37 +570,68 @@
         });
         if(document.getElementById('counter1')) observer.observe(document.getElementById('counter1'));
         
-        // Hamburger Menu
+        // ========== MOBILE MENU FUNCTIONS ==========
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const mobileMenu = document.getElementById('mobileMenu');
         const menuOverlay = document.getElementById('menuOverlay');
+        const body = document.body;
         
-        function toggleMenu() {
-            hamburgerBtn.classList.toggle('active');
-            mobileMenu.classList.toggle('open');
-            menuOverlay.classList.toggle('hidden');
-            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        function openMenu() {
+            hamburgerBtn.classList.add('active');
+            mobileMenu.classList.add('open');
+            menuOverlay.classList.add('show');
+            body.classList.add('menu-open');
         }
         
         function closeMenu() {
             hamburgerBtn.classList.remove('active');
             mobileMenu.classList.remove('open');
-            menuOverlay.classList.add('hidden');
-            document.body.style.overflow = '';
+            menuOverlay.classList.remove('show');
+            body.classList.remove('menu-open');
         }
         
-        if (hamburgerBtn) hamburgerBtn.addEventListener('click', toggleMenu);
-        if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
-        document.querySelectorAll('#mobileMenu a').forEach(link => link.addEventListener('click', closeMenu));
-        
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
+        function toggleMenu() {
+            if (mobileMenu.classList.contains('open')) {
                 closeMenu();
-                const target = document.querySelector(this.getAttribute('href'));
-                if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                openMenu();
+            }
+        }
+        
+        if (hamburgerBtn) {
+            hamburgerBtn.addEventListener('click', toggleMenu);
+        }
+        
+        if (menuOverlay) {
+            menuOverlay.addEventListener('click', closeMenu);
+        }
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                closeMenu();
+                setTimeout(() => {
+                    const target = document.querySelector(targetId);
+                    if(target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }, 300);
             });
+        });
+        
+        // Smooth scroll for desktop menu
+        document.querySelectorAll('header .hidden a, .btn-primary, .btn-outline').forEach(anchor => {
+            if (anchor.getAttribute('href') && anchor.getAttribute('href').startsWith('#')) {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if(target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            }
         });
         
         // Modal functions
@@ -494,7 +655,6 @@
                 phoneNumber = phoneNumber.replace(/[^0-9]/g, '');
                 let fullPhone = "+996" + phoneNumber;
                 
-                // Маалыматтарды даярдоо (дата жана убакыт ЖОК)
                 const data = {
                     name: document.getElementById('name').value,
                     surname: document.getElementById('surname').value,
