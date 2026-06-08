@@ -39,7 +39,7 @@
         .hamburger.active span:nth-child(1) { top: 10px; transform: rotate(135deg); }
         .hamburger.active span:nth-child(2) { opacity: 0; left: -60px; }
         .hamburger.active span:nth-child(3) { top: 10px; transform: rotate(-135deg); }
-        .mobile-menu { transform: translateX(-100%); transition: transform 0.3s ease-in-out; }
+        .mobile-menu { transform: translateX(-100%); transition: transform 0.3s ease-in-out; position: fixed; top: 70px; left: 0; width: 280px; height: calc(100% - 70px); background: white; box-shadow: 2px 0 10px rgba(0,0,0,0.1); z-index: 40; overflow-y: auto; }
         .mobile-menu.open { transform: translateX(0); }
         .counter { font-size: 2.5rem; font-weight: 800; color: #0a5a8c; }
         @media (max-width: 768px) {
@@ -112,7 +112,7 @@
             </div>
         </div>
         
-        <div class="mobile-menu fixed top-[60px] left-0 w-64 h-full bg-white shadow-xl z-40" id="mobileMenu">
+        <div class="mobile-menu" id="mobileMenu">
             <div class="flex flex-col p-6 gap-4">
                 <a href="#home" class="text-gray-700 hover:text-[#0a5a8c] py-2 font-medium border-b border-gray-100">🏠 Башкы</a>
                 <a href="#services" class="text-gray-700 hover:text-[#0a5a8c] py-2 font-medium border-b border-gray-100">🦷 Кызматтар</a>
@@ -160,6 +160,7 @@
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">Стоматологиялык <span class="text-[#0a5a8c]">кызматтар</span></h2>
                 <div class="w-20 h-1 bg-[#0a5a8c] mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Биз сиздин сулуу күлкүңүз үчүн бардык шарттарды түздүк</p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="bg-white rounded-xl p-6 shadow-md card-service group">
@@ -214,26 +215,70 @@
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">Баалар</h2>
                 <div class="w-20 h-1 bg-[#0a5a8c] mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-600">Ачык баалар, жогорку сапат</p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                <div class="bg-white rounded-xl p-6 shadow-md text-center hover:shadow-xl transition">
+                <div class="bg-white rounded-xl p-6 shadow-md text-center hover:shadow-xl transition transform hover:-translate-y-1">
                     <i class="fas fa-tooth text-4xl text-[#0a5a8c] mb-3"></i>
                     <h3 class="text-xl font-bold mb-2">Консультация</h3>
                     <p class="text-3xl font-bold text-[#0a5a8c] mb-3">500 сом</p>
                     <p class="text-gray-500">Толук текшерүү</p>
                 </div>
-                <div class="bg-white rounded-xl p-6 shadow-md text-center border-2 border-[#0a5a8c] relative">
+                <div class="bg-white rounded-xl p-6 shadow-md text-center border-2 border-[#0a5a8c] relative transform hover:-translate-y-1 transition">
                     <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#0a5a8c] text-white px-4 py-1 rounded-full text-sm font-semibold">Популярдуу</div>
                     <i class="fas fa-star text-4xl text-yellow-400 mb-3"></i>
                     <h3 class="text-xl font-bold mb-2 mt-4">Тишти дарылоо</h3>
                     <p class="text-3xl font-bold text-[#0a5a8c] mb-3">2 000 сом</p>
                     <p class="text-gray-500">1 кариести толтуруу</p>
                 </div>
-                <div class="bg-white rounded-xl p-6 shadow-md text-center hover:shadow-xl transition">
+                <div class="bg-white rounded-xl p-6 shadow-md text-center hover:shadow-xl transition transform hover:-translate-y-1">
                     <i class="fas fa-crown text-4xl text-[#0a5a8c] mb-3"></i>
                     <h3 class="text-xl font-bold mb-2">Корона</h3>
                     <p class="text-3xl font-bold text-[#0a5a8c] mb-3">8 000 сом</p>
                     <p class="text-gray-500">Металлокерамика</p>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <p class="text-gray-500 text-sm">* Толук баа жана акциялар тууралуу кеңеш алуу үчүн байланышыңыз</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section class="py-20 px-4">
+        <div class="container mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">Эмнеге <span class="text-[#0a5a8c]">бизди тандайсыз?</span></h2>
+                <div class="w-20 h-1 bg-[#0a5a8c] mx-auto rounded-full mb-4"></div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="text-center p-4">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-microscope text-2xl text-[#0a5a8c]"></i>
+                    </div>
+                    <h4 class="font-bold text-lg">Заманбап жабдуулар</h4>
+                    <p class="text-gray-500 text-sm">Германия, Швейцария жабдуулары</p>
+                </div>
+                <div class="text-center p-4">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-user-md text-2xl text-[#0a5a8c]"></i>
+                    </div>
+                    <h4 class="font-bold text-lg">Тажрыйбалуу дарыгерлер</h4>
+                    <p class="text-gray-500 text-sm">10+ жыл тажрыйба</p>
+                </div>
+                <div class="text-center p-4">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-hand-holding-heart text-2xl text-[#0a5a8c]"></i>
+                    </div>
+                    <h4 class="font-bold text-lg">Индивидуалдык мамиле</h4>
+                    <p class="text-gray-500 text-sm">Ар бир бейтапка өзгөчө мамиле</p>
+                </div>
+                <div class="text-center p-4">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-clock text-2xl text-[#0a5a8c]"></i>
+                    </div>
+                    <h4 class="font-bold text-lg">Ыңгайлуу график</h4>
+                    <p class="text-gray-500 text-sm">Дем алыш күндөрү да кабыл алабыз</p>
                 </div>
             </div>
         </div>
@@ -245,6 +290,7 @@
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">Биздин <span class="text-[#0a5a8c]">дарыгерлер</span></h2>
                 <div class="w-20 h-1 bg-[#0a5a8c] mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-600">Тажрыйбалуу жана билимдүү адистер</p>
             </div>
             <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
                 <div class="text-center group bg-white p-6 rounded-xl shadow-md">
@@ -343,7 +389,7 @@
                 </form>
                 
                 <div class="text-center mt-6 text-sm text-gray-500">
-                    <p>же бизге чалыңыз: <a href="tel:+996700123456" class="text-[#0a5a8c] font-semibold">+996 700 123 456</a></p>
+                    <p>же бизге чалыңыз: <a href="tel:+996700123456" class="text-[#0a5a8c] font-semibold hover:text-[#1e6fa3]">+996 700 123 456</a></p>
                 </div>
             </div>
         </div>
@@ -364,9 +410,9 @@
     <footer class="bg-gray-800 text-white py-12 px-4">
         <div class="container mx-auto text-center">
             <div class="flex justify-center gap-6 mb-6">
-                <a href="#" class="text-gray-400 hover:text-blue-400 text-2xl transition"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="text-gray-400 hover:text-blue-400 text-2xl transition"><i class="fab fa-telegram"></i></a>
-                <a href="#" class="text-gray-400 hover:text-blue-400 text-2xl transition"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-gray-400 hover:text-blue-400 text-2xl transition transform hover:scale-110"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-gray-400 hover:text-blue-400 text-2xl transition transform hover:scale-110"><i class="fab fa-telegram"></i></a>
+                <a href="#" class="text-gray-400 hover:text-blue-400 text-2xl transition transform hover:scale-110"><i class="fab fa-facebook"></i></a>
             </div>
             <p class="text-gray-400 text-sm">© 2026 Gül Dental. Бардык укуктар корголгон.</p>
             <p class="text-gray-500 text-xs mt-2">Күн күлкүңүз - биздин кайгыбыз</p>
@@ -375,7 +421,9 @@
 
     <script>
         // ========== КОНФИГУРАЦИЯ ==========
-        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxK9SFTLxbUGj7o2dR1PEde5sWnT-jHLwo2_mmTJNjUKhGxjCfhXsqVKDQKYjBQsA-njg/exec";
+        // ⚠️ БУЛ ЖЕРГЕ APPS SCRIPT URLИҢИЗДИ ЖАЗЫҢЫЗ
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw7jr-0g-6SSiAoFpwEzKs5er1GoCj5buDe0zWGGWcKwaZK1JejWZNKN_iXK8SqvDKt1A/exec";
+        // =================================
         
         // Counter Animation
         function animateCounter(elementId, start, end, duration) {
@@ -401,7 +449,7 @@
                 }
             });
         });
-        observer.observe(document.getElementById('counter1'));
+        if(document.getElementById('counter1')) observer.observe(document.getElementById('counter1'));
         
         // Hamburger Menu
         const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -445,49 +493,52 @@
         function closeErrorModal() { document.getElementById('errorModal').classList.remove('show'); }
         
         // Form submit
-        document.getElementById('orderForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            let phoneNumber = document.getElementById('phone').value;
-            phoneNumber = phoneNumber.replace(/[^0-9]/g, '');
-            let fullPhone = "+996" + phoneNumber;
-            
-            const data = {
-                name: document.getElementById('name').value,
-                surname: document.getElementById('surname').value,
-                phone: fullPhone,
-                service: document.getElementById('service').value,
-                date: document.getElementById('date').value,
-                time: document.getElementById('time').value,
-                message: document.getElementById('message').value
-            };
-            
-            if (!data.name || !data.surname) {
-                alert("Аты-жөнүңүздү жазыңыз!");
-                return;
-            }
-            if (phoneNumber.length !== 9) {
-                alert("Телефон номериңизди туура жазыңыз! (9 сан)");
-                return;
-            }
-            
-            showLoading();
-            
-            try {
-                await fetch(APPS_SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-                hideLoading();
-                showSuccessModal();
-            } catch(error) {
-                console.error('Error:', error);
-                hideLoading();
-                showErrorModal();
-            }
-        });
+        const orderForm = document.getElementById('orderForm');
+        if (orderForm) {
+            orderForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                let phoneNumber = document.getElementById('phone').value;
+                phoneNumber = phoneNumber.replace(/[^0-9]/g, '');
+                let fullPhone = "+996" + phoneNumber;
+                
+                const data = {
+                    name: document.getElementById('name').value,
+                    surname: document.getElementById('surname').value,
+                    phone: fullPhone,
+                    service: document.getElementById('service').value,
+                    date: document.getElementById('date').value,
+                    time: document.getElementById('time').value,
+                    message: document.getElementById('message').value
+                };
+                
+                if (!data.name || !data.surname) {
+                    alert("Аты-жөнүңүздү жазыңыз!");
+                    return;
+                }
+                if (phoneNumber.length !== 9) {
+                    alert("Телефон номериңизди туура жазыңыз! (9 сан)");
+                    return;
+                }
+                
+                showLoading();
+                
+                try {
+                    await fetch(APPS_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    });
+                    hideLoading();
+                    showSuccessModal();
+                } catch(error) {
+                    console.error('Error:', error);
+                    hideLoading();
+                    showErrorModal();
+                }
+            });
+        }
     </script>
 </body>
 </html>
