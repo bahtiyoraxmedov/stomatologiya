@@ -321,7 +321,7 @@
         </div>
     </section>
 
-    <!-- Order Form Section -->
+    <!-- Order Form Section - Дата жана убакыт ЖОК -->
     <section id="order" class="py-20 px-4">
         <div class="container mx-auto max-w-2xl">
             <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8">
@@ -365,17 +365,6 @@
                             <option value="ортодонтия">😬 Ортодонтия</option>
                             <option value="балдар">👶 Балдар стоматологиясы</option>
                         </select>
-                    </div>
-                    
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div class="mb-4">
-                            <label class="block text-gray-700 font-medium mb-2">Ыңгайлуу дата</label>
-                            <input type="date" id="date" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#0a5a8c] focus:ring-2 focus:ring-blue-200 transition">
-                        </div>
-                        <div class="mb-4">
-                            <label class="block text-gray-700 font-medium mb-2">Ыңгайлуу убакыт</label>
-                            <input type="time" id="time" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#0a5a8c] focus:ring-2 focus:ring-blue-200 transition">
-                        </div>
                     </div>
                     
                     <div class="mb-6">
@@ -422,7 +411,7 @@
     <script>
         // ========== КОНФИГУРАЦИЯ ==========
         // ⚠️ БУЛ ЖЕРГЕ APPS SCRIPT URLИҢИЗДИ ЖАЗЫҢЫЗ
-        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw7jr-0g-6SSiAoFpwEzKs5er1GoCj5buDe0zWGGWcKwaZK1JejWZNKN_iXK8SqvDKt1A/exec";
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzFNwW7JSlAlq4Lmk-PAtKdqLJapIKZTnQwcvMyKK00L03f9Vh6bIWKN9oXY_HSmPqqzw/exec";
         // =================================
         
         // Counter Animation
@@ -488,7 +477,10 @@
         function showLoading() { document.getElementById('loading').classList.add('show'); }
         function hideLoading() { document.getElementById('loading').classList.remove('show'); }
         function showSuccessModal() { document.getElementById('successModal').classList.add('show'); }
-        function closeSuccessModal() { document.getElementById('successModal').classList.remove('show'); document.getElementById('orderForm').reset(); }
+        function closeSuccessModal() { 
+            document.getElementById('successModal').classList.remove('show'); 
+            document.getElementById('orderForm').reset(); 
+        }
         function showErrorModal() { document.getElementById('errorModal').classList.add('show'); }
         function closeErrorModal() { document.getElementById('errorModal').classList.remove('show'); }
         
@@ -502,13 +494,12 @@
                 phoneNumber = phoneNumber.replace(/[^0-9]/g, '');
                 let fullPhone = "+996" + phoneNumber;
                 
+                // Маалыматтарды даярдоо (дата жана убакыт ЖОК)
                 const data = {
                     name: document.getElementById('name').value,
                     surname: document.getElementById('surname').value,
                     phone: fullPhone,
                     service: document.getElementById('service').value,
-                    date: document.getElementById('date').value,
-                    time: document.getElementById('time').value,
                     message: document.getElementById('message').value
                 };
                 
